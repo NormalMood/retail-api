@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Constants\AppConstants;
 use App\Http\Resources\IncomeResource;
 use App\Models\Income;
 
@@ -11,7 +12,7 @@ class IncomeService
     {
         $incomes = Income::query()
             ->whereBetween('date', [$dateFrom, $dateTo])
-            ->paginate($limit ?? 500);
+            ->paginate($limit ?? AppConstants::DEFAULT_LIMIT);
         return IncomeResource::collection($incomes);
     }
 }
