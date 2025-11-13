@@ -8,12 +8,12 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StockRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'dateFrom' => [
@@ -31,7 +31,7 @@ class StockRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator): never
     {
         throw new HttpResponseException(response()->json(
             $validator->errors()->toArray(),

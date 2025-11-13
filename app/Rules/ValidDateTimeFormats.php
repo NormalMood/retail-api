@@ -26,12 +26,7 @@ class ValidDateTimeFormats implements Rule
         return false;
     }
 
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
+    public function message(): string
     {
         return 'The :attribute must be a valid date in Y-m-d or Y-m-d H:i:s format.';
     }

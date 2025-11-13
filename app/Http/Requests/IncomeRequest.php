@@ -13,7 +13,7 @@ class IncomeRequest extends FormRequest
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'dateFrom' => ['required', 'date_format:Y-m-d'],
@@ -22,7 +22,7 @@ class IncomeRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator): never
     {
         throw new HttpResponseException(response()->json(
             $validator->errors()->toArray(),
